@@ -119,11 +119,10 @@ class ReActAgent:
         self.clear_memory()
 
     def call_base_advisor(self, state: AgentState):
+        print("===== Calling Base Advisor Agent =====")
         messages = state["messages"]
         prompt = generate_base_prompt(self.user, messages)
         output = self.llm.invoke(prompt)
-        print(output)
-
         # Check for tool calls
         if hasattr(output, "tool_calls") and output.tool_calls:
             # The agent wants to use tools - return the AI message with tool calls
@@ -137,13 +136,14 @@ class ReActAgent:
                 "messages": [AIMessage(content=parsed.response)],
             }
         except Exception as e:
-            print("Error parsing LLM output:", e)
+            print("Error parsing LLM output:", output.content)
             return {
                 "loan_to_apply": None,
                 "messages": [AIMessage(content=output.content)],
             }
 
     def call_eligibility_agent(self, state: AgentState):
+        print("===== Calling Eligibility Agent =====")
         loan_id = state["loan_to_apply"]
         if loan_id is None:
             return {"messages": [AIMessage(content="No loan application detected.")]}
@@ -170,24 +170,23 @@ class ReActAgent:
                 print("Added loan application record to database.")
             else:
                 print("Application not eligible; no record added.")
-                print(parsed.assessment_record)
             return {
                 "loan_to_apply": None,
                 "messages": [AIMessage(content=parsed.user_message)],
             }
         except Exception as e:
-            print("Error parsing LLM output:", e)
+            print("Error parsing LLM output:", output.content)
             return {
                 "loan_to_apply": None,
                 "messages": [AIMessage(content=output.content)],
             }
 
     def call_tools(self, state: AgentState):
-        print("Calling tools for agent...")
         tool_calls = state["messages"][-1].tool_calls  # type: ignore
-        print("Tool calls:", tool_calls)
+        print("Tool calls:", len(tool_calls))
         results = []
         for t in tool_calls:
+            print("Invoking tool:", t["name"], "with args:", t["args"])
             result = self.tools[t["name"]].invoke(t["args"])
             results.append(
                 ToolMessage(tool_call_id=t["id"], name=t["name"], content=str(result))
@@ -199,16 +198,13 @@ class ReActAgent:
 
     def should_call_base_advisor_tools(self, state: AgentState):
         result = state["messages"][-1]
-        print("Checking if base advisor wants to call tools...", result)
         return "base_agent_tools" if hasattr(result, "tool_calls") and len(result.tool_calls) > 0 else END  # type: ignore
 
     def should_call_eligibility_agent_tools(self, state: AgentState):
         result = state["messages"][-1]
-        print("Checking if eligibility agent wants to call tools...", result)
         return "eligibility_agent_tools" if hasattr(result, "tool_calls") and len(result.tool_calls) > 0 else END  # type: ignore
 
     def should_apply_loan(self, state: AgentState):
-        print("Checking if user wants to apply for a loan...")
         loan_id = state["loan_to_apply"]
         return "eligibility_agent" if loan_id is not None else END
 

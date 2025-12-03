@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from datetime import datetime
 
 
 class Loan(BaseModel):
@@ -100,6 +101,23 @@ class UserLoanWithDetails(UserLoan):
         lines += self.loan_details.to_context().splitlines()[1:]  # skip first line
         return "\n".join(lines)
 
+    def table_display(self) -> dict:
+        loan_info = self.loan_details.model_dump()
+        base_info = self.model_dump()
+        base_info.pop("loan_details", None)
+        return {
+            "#ID": base_info["application_id"],
+            "LID": base_info["loan_id"],
+            "Applied At": base_info["applied_on"].split(":")[0],
+            "Active": "Yes" if not base_info["ended"] else "No",
+            "Loan_Type": loan_info["type"],
+            "Amount": loan_info["amount"],
+            "Monthly Payment": loan_info["monthly_payment"],
+            "Interest Rate": loan_info["interest_rate"],
+            "Term Months": loan_info["term_months"],
+            "Record": base_info["record"],
+        }
+
 
 def user_loan_list_to_context(user_loans: list[UserLoanWithDetails]) -> str:
     if not user_loans:
@@ -155,6 +173,6 @@ eligibility_agent_output_reject_example = EligibilityAgentOutputSchema.model_val
     {
         "application_eligible": False,
         "assessment_record": "The user's application was rejected due to a credit score of 600, which is below the required minimum of 650 for this loan.",
-        "user_message": "We regret to inform you that your application for the loan has been rejected due to not meeting the required credit score criteria.",
+        "user_message": "We regret to inform you that your application for the mortgage loan has been rejected due to not meeting the required credit score criteria.",
     }
 ).model_dump_json()

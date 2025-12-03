@@ -7,7 +7,7 @@ from db import init_db
 from rag import RAG
 from tools import get_tools
 from llm import get_model
-from state import get_app_state, ChatMessage
+from state import get_app_state, ChatMessage, get_welcome_message
 from datetime import datetime
 import utils
 
@@ -101,7 +101,7 @@ def applied_loans_page(selected_user: User, db_conn: SQLiteConnection):
     # Display in a table
     table = []
     for ln in loans:
-        table.append(ln.model_dump())
+        table.append(ln.table_display())
 
     # Normalize table values for display (fix narrow no-break spaces etc.)
     normalized_table = []
@@ -113,8 +113,19 @@ def applied_loans_page(selected_user: User, db_conn: SQLiteConnection):
             else:
                 norm_row[k] = v
         normalized_table.append(norm_row)
+    hide_table_row_index = """
+        <style>
+        thead tr th:first-child {display:none}
+        tbody th {display:none}
+        thead th {white-space: nowrap;}
+        </style>
+    """
 
-    st.table(normalized_table)
+    # Inject CSS with Markdown
+    st.markdown(hide_table_row_index, unsafe_allow_html=True)
+    st.table(
+        normalized_table,
+    )
 
 
 def main():
@@ -171,27 +182,40 @@ def main():
     if db_conn is None or agent is None:
         st.sidebar.error("Failed to initialize resources.")
         return
-    # Build user map and UI selector
-    user_map = {usr.email: usr for usr in users} if users else {}
+    # Sidebar: user selector + natural navigation
+    st.sidebar.header("User")
+    user_map = (
+        {f"{getattr(usr, 'email', usr.user_id)}": usr for usr in users} if users else {}
+    )
     user_options = list(user_map.keys())
 
     if not user_options:
         st.sidebar.info("No users available in the database.")
         return
 
-    # Determine currently selected index to keep selectbox stable across reruns
-    current_id = state.current_user_id
+    # Build a readable label for each user showing email and credit score when available
+    labels: list[str] = []
+    for usr in users:
+        score = getattr(usr, "credit_score", None)
+        income = getattr(usr, "income", None)
+        label_parts = [getattr(usr, "email", str(getattr(usr, "user_id", "user")))]
+        if score is not None:
+            label_parts.append(f"score {score}")
+        if income is not None:
+            label_parts.append(f"income ${int(income):,}")
+        labels.append(" — ".join(label_parts))
+
+    # Keep selection stable using state.current_user_id
     default_index = 0
-    if current_id is not None:
-        for i, k in enumerate(user_options):
-            if k.startswith(f"{current_id} -"):
+    if state.current_user_id is not None:
+        for i, usr in enumerate(users):
+            if getattr(usr, "user_id", None) == state.current_user_id:
                 default_index = i
                 break
 
-    choice = st.sidebar.selectbox(
-        "Select user", options=user_options, index=default_index
-    )
-    selected = user_map.get(choice)
+    choice = st.sidebar.selectbox("Switch user", options=labels, index=default_index)
+    # map back to selected user object
+    selected = users[labels.index(choice)]
     if selected is None:
         st.sidebar.error("Selected user not found.")
         return
@@ -206,7 +230,7 @@ def main():
             except Exception:
                 pass
         # refresh chat history
-        state.chat_history = []
+        state.chat_history = [get_welcome_message()]
         # Refresh applied loans from DB for the new user
         try:
             state.applied_loans = dal.get_user_loans(db_conn, selected.user_id)
@@ -215,7 +239,24 @@ def main():
 
         state.current_user_id = selected.user_id
 
-    page = st.sidebar.radio("Navigation", ["Chat", "Applied Loans"])
+    # Natural navigation with friendly labels
+    st.sidebar.markdown("---")
+    page_choice = st.sidebar.radio("Go to", ["💬 Chat", "📋 Applied Loans"], index=0)
+    page = "Chat" if page_choice.startswith("💬") else "Applied Loans"
+
+    # Sidebar action buttons
+    st.sidebar.markdown("---")
+    if st.sidebar.button("🔄 Refresh loans"):
+        try:
+            state.applied_loans = dal.get_user_loans(db_conn, selected.user_id)
+        except Exception:
+            state.applied_loans = []
+        st.rerun()
+
+    if st.sidebar.button("🧹 Clear chat"):
+        state.chat_history = [get_welcome_message()]
+        agent.clear_memory()
+        st.rerun()
     if page == "Chat":
         # Use the modern chat UI which reads the persistent agent from AppState
         chat_ui()

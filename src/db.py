@@ -4,10 +4,7 @@ from langchain_community.utilities.sql_database import SQLDatabase
 import sqlite3
 from datetime import datetime, timedelta
 import os
-
-
 import sqlite3
-import json
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
 
@@ -72,7 +69,7 @@ def create_database(db_path: str = "loans_demo.db"):
     return conn
 
 
-def seed_loans(cursor):
+def seed_loans(cursor: sqlite3.Cursor):
     """Seed loan products with different requirements and monthly payments"""
 
     def calculate_monthly_payment(amount, interest_rate, term_months):
@@ -225,55 +222,55 @@ def seed_loans(cursor):
     )
 
 
-def seed_users(cursor):
+def seed_users(cursor: sqlite3.Cursor):
     """Seed users with different financial profiles and other_info"""
     users = [
-        # Unemployed but with assets
+        # User 1 - Young Professional (needs personalized suggestions)
         {
             "user_id": 1,
+            "email": "young.professional@example.com",
+            "credit_score": 720,
+            "income": 68000.0,
+            "job_title": "Marketing Manager",
+            "other_info": "Working at advertising agency for 3 years and 2 months. Previously interned for 6 months. Renting apartment in downtown. Owns 2018 Honda Civic. No criminal record. Has $15k in student loan debt. Looking to consolidate debt and potentially buy first car upgrade.",
+        },
+        # User 2 - Unemployed but with assets (rejection case - no income)
+        {
+            "user_id": 2,
             "email": "unemployed.asset@example.com",
             "credit_score": 620,
             "income": 0.0,
             "job_title": "Unemployed",
             "other_info": "Recently laid off from tech job after 4 years and 3 months at Google as Senior Software Engineer. Owns 2019 Tesla Model 3. Has significant savings ($100k). No criminal record. Currently on severance package for 6 months.",
         },
-        # Student with part-time job
-        {
-            "user_id": 2,
-            "email": "student.borrower@example.com",
-            "credit_score": 680,
-            "income": 15000.0,
-            "job_title": "Student",
-            "other_info": "Full-time MBA student at Stanford. Part-time internship at Google for 8 months. Previously worked 2 years as Business Analyst at McKinsey. Owns 2015 Honda Civic. No criminal record. Scholarship covers 70% of tuition. Living in student housing.",
-        },
-        # Freelancer/Contractor
+        # User 3 - Seasonal Worker with DUI (rejection case - low income + criminal)
         {
             "user_id": 3,
-            "email": "freelancer.designer@example.com",
-            "credit_score": 690,
-            "income": 65000.0,
-            "job_title": "Freelance Graphic Designer",
-            "other_info": "Self-employed for 3 years and 2 months. Previously worked 4 years as Graphic Designer at Adobe. Variable monthly income but consistent yearly average. Owns 2021 MacBook Pro, professional camera equipment. No vehicle ownership (uses car-sharing). No criminal record.",
+            "email": "seasonal.worker@example.com",
+            "credit_score": 590,
+            "income": 28000.0,
+            "job_title": "Seasonal Construction Worker",
+            "other_info": "Works construction April-October for 5 years. Unemployed November-March. Previously worked 2 years as warehouse worker. Owns pickup truck: 2015 Ford F-150. Previous DUI conviction 3 years ago (completed probation). Tools and equipment valued at $15k.",
         },
-        # Retired
+        # User 4 - First-time Home Buyer (mortgage success case)
         {
             "user_id": 4,
-            "email": "retired.teacher@example.com",
-            "credit_score": 750,
-            "income": 45000.0,
-            "job_title": "Retired Teacher",
-            "other_info": "Retired after 30 years and 6 months of teaching at Lincoln High School. Pension income stable. Owns home outright (no mortgage). Has 2 vehicles: 2017 Toyota Camry and 2020 Honda CR-V. No criminal record. Travels frequently.",
+            "email": "first.home@example.com",
+            "credit_score": 710,
+            "income": 85000.0,
+            "job_title": "Data Scientist",
+            "other_info": "Works at tech startup TechCorp for 2 years and 3 months. Previously interned at IBM for 6 months. Renting apartment, saving for down payment. Owns 2019 Subaru Forester. No criminal record. Has $60k saved for down payment (20% of $300k). Stable employment history.",
         },
-        # Gig worker (Uber/Doordash)
+        # User 5 - Small Business Owner (business loan success)
         {
             "user_id": 5,
-            "email": "gig.worker@example.com",
-            "credit_score": 610,
-            "income": 32000.0,
-            "job_title": "Ride-share Driver",
-            "other_info": "Drives for Uber and Lyft full-time for 2 years and 8 months. Previously worked 3 years as delivery driver for Amazon. Owns 2018 Toyota Prius (used for work). Previous minor traffic violations (2 speeding tickets). Works 50+ hours weekly. Income varies by season.",
+            "email": "small.business@example.com",
+            "credit_score": 740,
+            "income": 110000.0,
+            "job_title": "Small Business Owner",
+            "other_info": "Owns a boutique coffee shop for 3 years and 1 month. Previously managed Starbucks for 5 years. Business revenue $300k annually. Owns delivery van: 2020 Ford Transit. No criminal record. Business has 5 employees. Looking to expand to second location.",
         },
-        # Medical Resident (Doctor in training)
+        # User 6 - Medical Resident (borderline but promising success)
         {
             "user_id": 6,
             "email": "medical.resident@example.com",
@@ -282,16 +279,16 @@ def seed_users(cursor):
             "job_title": "Medical Resident",
             "other_info": "Third year resident at Johns Hopkins for 2 years and 9 months. Previously completed 4 years of medical school. High future earning potential. Owns 2016 Honda Accord. Student loan debt $200k (deferred during residency). No criminal record. Works 80-hour weeks.",
         },
-        # Stay-at-home parent
+        # User 7 - Student with part-time job (student loan success)
         {
             "user_id": 7,
-            "email": "stay.home.parent@example.com",
-            "credit_score": 720,
-            "income": 0.0,
-            "job_title": "Stay-at-Home Parent",
-            "other_info": "Manages household. Previously worked as accountant for 8 years and 4 months at Deloitte. Joint assets with spouse. Owns 2019 minivan (Honda Odyssey). No criminal record. Volunteer work at local school for 2 years.",
+            "email": "student.borrower@example.com",
+            "credit_score": 680,
+            "income": 15000.0,
+            "job_title": "Student",
+            "other_info": "Full-time MBA student at Stanford. Part-time internship at Google for 8 months. Previously worked 2 years as Business Analyst at McKinsey. Owns 2015 Honda Civic. No criminal record. Scholarship covers 70% of tuition. Living in student housing.",
         },
-        # Recent Graduate (first job)
+        # User 8 - Recent Graduate (auto loan success)
         {
             "user_id": 8,
             "email": "new.grad@example.com",
@@ -300,41 +297,50 @@ def seed_users(cursor):
             "job_title": "Software Engineer I",
             "other_info": "Graduated 6 months ago from MIT. Currently working at Google for 6 months. Previously interned at Microsoft for 3 months. Renting apartment. No vehicle (uses public transit). Student loan debt $40k. No criminal record. Building credit history.",
         },
-        # Seasonal Worker
+        # User 9 - Remote Worker (multiple loan success)
         {
             "user_id": 9,
-            "email": "seasonal.worker@example.com",
-            "credit_score": 590,
-            "income": 28000.0,
-            "job_title": "Seasonal Construction Worker",
-            "other_info": "Works construction April-October for 5 years. Unemployed November-March. Previously worked 2 years as warehouse worker. Owns pickup truck: 2015 Ford F-150. Previous DUI conviction 3 years ago (completed probation). Tools and equipment valued at $15k.",
-        },
-        # Remote Worker (Digital Nomad)
-        {
-            "user_id": 10,
             "email": "digital.nomad@example.com",
             "credit_score": 730,
             "income": 85000.0,
             "job_title": "Remote Software Developer",
             "other_info": "Works remotely for tech company GitLab for 3 years and 7 months. Previously worked 2 years at Facebook office. Travels internationally frequently. No permanent address. Owns laptop and camera gear. No vehicle ownership. No criminal record. Uses co-working spaces globally.",
         },
-        # Small Business Owner (new addition to qualify for business loan)
+        # User 10 - Freelancer/Contractor (personal loan success)
+        {
+            "user_id": 10,
+            "email": "freelancer.designer@example.com",
+            "credit_score": 690,
+            "income": 65000.0,
+            "job_title": "Freelance Graphic Designer",
+            "other_info": "Self-employed for 3 years and 2 months. Previously worked 4 years as Graphic Designer at Adobe. Variable monthly income but consistent yearly average. Owns 2021 MacBook Pro, professional camera equipment. No vehicle ownership (uses car-sharing). No criminal record.",
+        },
+        # User 11 - Gig worker (auto loan for work vehicle success)
         {
             "user_id": 11,
-            "email": "small.business@example.com",
-            "credit_score": 740,
-            "income": 110000.0,
-            "job_title": "Small Business Owner",
-            "other_info": "Owns a boutique coffee shop for 3 years and 1 month. Previously managed Starbucks for 5 years. Business revenue $300k annually. Owns delivery van: 2020 Ford Transit. No criminal record. Business has 5 employees. Looking to expand to second location.",
+            "email": "gig.worker@example.com",
+            "credit_score": 610,
+            "income": 32000.0,
+            "job_title": "Ride-share Driver",
+            "other_info": "Drives for Uber and Lyft full-time for 2 years and 8 months. Previously worked 3 years as delivery driver for Amazon. Owns 2018 Toyota Prius (used for work). Previous minor traffic violations (2 speeding tickets). Works 50+ hours weekly. Income varies by season.",
         },
-        # First-time Home Buyer (new addition to qualify for mortgage)
+        # User 12 - Retired (personal + auto loan success)
         {
             "user_id": 12,
-            "email": "first.home@example.com",
-            "credit_score": 710,
-            "income": 85000.0,
-            "job_title": "Data Scientist",
-            "other_info": "Works at tech startup TechCorp for 2 years and 3 months. Previously interned at IBM for 6 months. Renting apartment, saving for down payment. Owns 2019 Subaru Forester. No criminal record. Has $60k saved for down payment (20% of $300k). Stable employment history.",
+            "email": "retired.teacher@example.com",
+            "credit_score": 750,
+            "income": 45000.0,
+            "job_title": "Retired Teacher",
+            "other_info": "Retired after 30 years and 6 months of teaching at Lincoln High School. Pension income stable. Owns home outright (no mortgage). Has 2 vehicles: 2017 Toyota Camry and 2020 Honda CR-V. No criminal record. Travels frequently.",
+        },
+        # User 13 - Stay-at-home parent (rejection - needs joint application)
+        {
+            "user_id": 13,
+            "email": "stay.home.parent@example.com",
+            "credit_score": 720,
+            "income": 0.0,
+            "job_title": "Stay-at-Home Parent",
+            "other_info": "Manages household. Previously worked as accountant for 8 years and 4 months at Deloitte. Joint assets with spouse. Owns 2019 minivan (Honda Odyssey). No criminal record. Volunteer work at local school for 2 years.",
         },
     ]
     cursor.executemany(
@@ -347,81 +353,54 @@ def seed_users(cursor):
     )
 
 
-def seed_user_loans(cursor):
-    """Seed only successful loan applications with monthly payments"""
+def seed_user_loans(cursor: sqlite3.Cursor):
+    """Seed only successful loan applications"""
     applications = []
     application_id = 1
 
     # Define some application dates
     base_date = datetime.now() - timedelta(days=90)
 
-    # Get loan details for monthly payment calculation
-    cursor.execute("SELECT loan_id, amount, interest_rate, term_months FROM loans")
-
-    # User 2 (Student) - Student Loan
+    # USER 1 - Young Professional (Only 1 successful loan - for demo purposes)
     applications.extend(
         [
             {
                 "application_id": application_id,
-                "user_id": 2,
-                "loan_id": 5,
-                "applied_on": (base_date + timedelta(days=10)).isoformat(),
+                "user_id": 1,
+                "loan_id": 1,  # Personal Loan
+                "applied_on": (base_date + timedelta(days=5)).isoformat(),
                 "ended": False,
-                "record": "Student loan approved. Enrolled at Stanford University (accredited institution). Part-time income meets requirement. Excellent academic standing.",
-            }
+                "record": "Personal loan approved for debt consolidation. Good credit score and stable employment history. $15k student debt manageable with current income.",
+            },
         ]
     )
     application_id += 1
 
-    # User 3 (Freelancer) - Personal Loan
-    applications.extend(
-        [
-            {
-                "application_id": application_id,
-                "user_id": 3,
-                "loan_id": 1,
-                "applied_on": (base_date + timedelta(days=15)).isoformat(),
-                "ended": False,
-                "record": "Personal loan approved. Freelance income verified through bank statements (3-year history). Credit score meets requirement. No criminal record favorable.",
-            }
-        ]
-    )
-    application_id += 1
-
-    # User 4 (Retired) - Personal and Auto Loans
-
+    # User 4 (First-time Home Buyer) - Mortgage
     applications.extend(
         [
             {
                 "application_id": application_id,
                 "user_id": 4,
-                "loan_id": 1,
+                "loan_id": 2,
                 "applied_on": (base_date + timedelta(days=20)).isoformat(),
-                "ended": True,
-                "record": "Personal loan approved. Stable pension income meets requirement. Excellent credit history. Home ownership with no mortgage strengthens application.",
-            },
-            {
-                "application_id": application_id + 1,
-                "user_id": 4,
-                "loan_id": 3,
-                "applied_on": (base_date + timedelta(days=25)).isoformat(),
                 "ended": False,
-                "record": "Auto loan approved for new vehicle purchase. Existing vehicles to be traded in. Pension income sufficient for payments. Excellent payment history on previous auto loans.",
-            },
+                "record": "Mortgage approved for first home purchase. 20% down payment secured. Income meets requirement. Stable employment at tech startup. Good debt-to-income ratio.",
+            }
         ]
     )
-    application_id += 2
+    application_id += 1
 
-    # User 5 (Gig worker) - Auto Loan (for work vehicle)
+    # User 5 (Small Business Owner) - Small Business Loan
     applications.extend(
         [
             {
                 "application_id": application_id,
                 "user_id": 5,
-                "loan_id": 3,
-                "applied_on": (base_date + timedelta(days=30)).isoformat(),
+                "loan_id": 4,
+                "applied_on": (base_date + timedelta(days=25)).isoformat(),
                 "ended": False,
-                "record": "Auto loan approved for vehicle upgrade. Income from ride-sharing verified. Vehicle essential for livelihood. Interest rate adjusted for risk profile.",
+                "record": "Small business loan approved for expansion. Business revenue verified through tax returns. 3-year business history meets requirement. Business plan approved by committee.",
             }
         ]
     )
@@ -434,7 +413,7 @@ def seed_user_loans(cursor):
                 "application_id": application_id,
                 "user_id": 6,
                 "loan_id": 1,
-                "applied_on": (base_date + timedelta(days=35)).isoformat(),
+                "applied_on": (base_date + timedelta(days=30)).isoformat(),
                 "ended": False,
                 "record": "Personal loan approved. Medical resident with high future earning potential. Stable hospital income meets requirements. Professional license enhances credibility.",
             }
@@ -442,15 +421,29 @@ def seed_user_loans(cursor):
     )
     application_id += 1
 
-    # User 8 (Recent Graduate) - Auto Loan
+    # User 7 (Student) - Student Loan
+    applications.extend(
+        [
+            {
+                "application_id": application_id,
+                "user_id": 7,
+                "loan_id": 5,
+                "applied_on": (base_date + timedelta(days=35)).isoformat(),
+                "ended": False,
+                "record": "Student loan approved. Enrolled at Stanford University (accredited institution). Part-time income meets requirement. Excellent academic standing.",
+            }
+        ]
+    )
+    application_id += 1
 
+    # User 8 (Recent Graduate) - Auto Loan
     applications.extend(
         [
             {
                 "application_id": application_id,
                 "user_id": 8,
                 "loan_id": 3,
-                "applied_on": (base_date + timedelta(days=45)).isoformat(),
+                "applied_on": (base_date + timedelta(days=40)).isoformat(),
                 "ended": False,
                 "record": "Auto loan approved for first vehicle. New job at Google provides stable income. MIT graduate status favorable. Building credit history, co-signer not required.",
             }
@@ -458,23 +451,22 @@ def seed_user_loans(cursor):
     )
     application_id += 1
 
-    # User 10 (Remote Worker) - Personal and Auto Loans
-
+    # User 9 (Remote Worker) - Personal and Auto Loans
     applications.extend(
         [
             {
                 "application_id": application_id,
-                "user_id": 10,
+                "user_id": 9,
                 "loan_id": 1,
-                "applied_on": (base_date + timedelta(days=50)).isoformat(),
+                "applied_on": (base_date + timedelta(days=45)).isoformat(),
                 "ended": False,
                 "record": "Personal loan approved. Stable remote work income verified. Excellent credit score. International travel history not a concern for unsecured loan.",
             },
             {
                 "application_id": application_id + 1,
-                "user_id": 10,
+                "user_id": 9,
                 "loan_id": 3,
-                "applied_on": (base_date + timedelta(days=55)).isoformat(),
+                "applied_on": (base_date + timedelta(days=50)).isoformat(),
                 "ended": False,
                 "record": "Auto loan approved (decided to purchase vehicle for domestic travel). High income meets requirements. No criminal record. Digital nomad lifestyle accommodated.",
             },
@@ -482,32 +474,55 @@ def seed_user_loans(cursor):
     )
     application_id += 2
 
-    # User 11 (Small Business Owner) - Small Business Loan
+    # User 10 (Freelancer) - Personal Loan
     applications.extend(
         [
             {
                 "application_id": application_id,
-                "user_id": 11,
-                "loan_id": 4,
-                "applied_on": (base_date + timedelta(days=60)).isoformat(),
+                "user_id": 10,
+                "loan_id": 1,
+                "applied_on": (base_date + timedelta(days=55)).isoformat(),
                 "ended": False,
-                "record": "Small business loan approved for expansion. Business revenue verified through tax returns. 3-year business history meets requirement. Business plan approved by committee.",
+                "record": "Personal loan approved. Freelance income verified through bank statements (3-year history). Credit score meets requirement. No criminal record favorable.",
             }
         ]
     )
     application_id += 1
 
-    # User 12 (First-time Home Buyer) - Mortgage
+    # User 11 (Gig worker) - Auto Loan
+    applications.extend(
+        [
+            {
+                "application_id": application_id,
+                "user_id": 11,
+                "loan_id": 3,
+                "applied_on": (base_date + timedelta(days=60)).isoformat(),
+                "ended": False,
+                "record": "Auto loan approved for vehicle upgrade. Income from ride-sharing verified. Vehicle essential for livelihood. Interest rate adjusted for risk profile.",
+            }
+        ]
+    )
+    application_id += 1
+
+    # User 12 (Retired) - Personal and Auto Loans
     applications.extend(
         [
             {
                 "application_id": application_id,
                 "user_id": 12,
-                "loan_id": 2,
+                "loan_id": 1,
                 "applied_on": (base_date + timedelta(days=65)).isoformat(),
+                "ended": True,
+                "record": "Personal loan approved. Stable pension income meets requirement. Excellent credit history. Home ownership with no mortgage strengthens application.",
+            },
+            {
+                "application_id": application_id + 1,
+                "user_id": 12,
+                "loan_id": 3,
+                "applied_on": (base_date + timedelta(days=70)).isoformat(),
                 "ended": False,
-                "record": "Mortgage approved for first home purchase. 20% down payment secured. Income meets requirement. Stable employment at tech startup. Good debt-to-income ratio.",
-            }
+                "record": "Auto loan approved for new vehicle purchase. Existing vehicles to be traded in. Pension income sufficient for payments. Excellent payment history on previous auto loans.",
+            },
         ]
     )
 
