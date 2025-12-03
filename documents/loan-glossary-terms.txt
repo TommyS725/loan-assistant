@@ -1,0 +1,83 @@
+# Loan Glossary and Terms
+
+## A-D
+
+**Amortization**: The process of paying off a loan through regular payments over time, with each payment covering both principal and interest.
+
+**Annual Percentage Rate (APR)**: The total yearly cost of a loan including interest rate plus fees, expressed as a percentage.
+
+**Asset**: Property or belongings that have value and can be used as collateral for loans.
+
+**Balloon Payment**: A large payment due at the end of a loan term.
+
+**Borrowed Funds**: Money received from a lender that must be repaid with interest.
+
+**Capitalization**: Adding unpaid interest to the principal balance of a loan.
+
+**Collateral**: Property or assets pledged as security for a loan.
+
+**Co-signer**: Person who signs a loan agreement and becomes responsible for repayment if the primary borrower defaults.
+
+**Credit Check**: Investigation of a borrower's credit history and credit score.
+
+**Credit Score**: A numerical rating (300-850) that represents a person's creditworthiness.
+
+**Debt-to-Income Ratio (DTI)**: The percentage of monthly income that goes toward debt payments.
+
+**Default**: Failure to make loan payments according to the terms of the loan agreement.
+
+## E-M
+
+**Equity**: The difference between what a property is worth and what is owed on it.
+
+**Escrow**: Money held by a third party to pay taxes and insurance on behalf of a borrower.
+
+**Fixed-Rate Loan**: A loan with an interest rate that remains constant throughout the loan term.
+
+**Foreclosure**: Legal process where a lender takes possession of property when borrower fails to make payments.
+
+**Grace Period**: Time allowed after a payment due date before late fees are charged.
+
+**Guarantee**: Promise to repay a loan if the primary borrower defaults.
+
+**Hard Inquiry**: Credit check that affects credit score and appears on credit report.
+
+**Interest**: The cost of borrowing money, expressed as a percentage of the loan amount.
+
+**Interest Rate**: The percentage charged on outstanding loan balance.
+
+** Lien**: Legal claim against property to secure payment of a debt.
+
+**Loan-to-Value Ratio (LTV)**: The ratio of the loan amount to the value of the property being purchased.
+
+**Maturity Date**: The date when a loan must be fully repaid.
+
+**Mortgagor**: The borrower in a mortgage agreement.
+
+**Mortgagee**: The lender in a mortgage agreement.
+
+## N-Z
+
+**Negative Amortization**: When monthly payments aren't enough to cover interest, causing the loan balance to increase.
+
+**Origination Fee**: Fee charged by lender for processing a new loan application.
+
+**Prepayment Penalty**: Fee charged for paying off a loan before the scheduled maturity date.
+
+**Principal**: The original amount of money borrowed, excluding interest.
+
+**Refinancing**: Replacing an existing loan with a new loan, often with better terms.
+
+**Secured Loan**: A loan backed by collateral that can be seized if borrower defaults.
+
+**Soft Inquiry**: Credit check that doesn't affect credit score and doesn't appear on credit report.
+
+**Term**: The length of time over which a loan must be repaid.
+
+**Unsecured Loan**: A loan not backed by collateral, based only on borrower's creditworthiness.
+
+**Variable-Rate Loan**: A loan with an interest rate that can change over time.
+
+**Write-off**: When a lender removes a bad debt from their books, often after collection attempts fail.
+
+**Yield**: The return on investment for a lender, equivalent to the interest rate received.

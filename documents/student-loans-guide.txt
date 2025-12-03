@@ -1,0 +1,250 @@
+# Student Loans Guide
+
+## What are Student Loans?
+
+Student loans are designed to help students and their families pay for education expenses including tuition, fees, room and board, books, and supplies. Unlike other loans, student loans often have lower interest rates and more flexible repayment options.
+
+## Types of Student Loans
+
+### Federal Student Loans
+
+#### Direct Subsidized Loans
+- **Eligibility**: Based on financial need
+- **Interest**: Government pays interest while in school
+- **Limits**: $3,500-$5,500 per year depending on grade level
+- **Repayment**: Begins 6 months after graduation
+- **Best For**: Students with demonstrated financial need
+
+#### Direct Unsubsidized Loans
+- **Eligibility**: Available to all students regardless of need
+- **Interest**: Accrues immediately and during deferment
+- **Limits**: $5,500-$12,500 per year depending on grade level
+- **Repayment**: Begins 6 months after graduation
+- **Best For**: Students who need to borrow beyond subsidized limits
+
+#### Direct PLUS Loans
+- **Eligibility**: Graduate students or parents of undergraduate students
+- **Credit Check**: Requires credit check (not as strict as other loans)
+- **Interest Rate**: Higher than direct subsidized/unsubsidized loans
+- **Limits**: Up to full cost of attendance minus other aid
+- **Best For**: Graduate students and families needing additional funds
+
+#### Direct Consolidation Loans
+- **Purpose**: Combine multiple federal loans into one
+- **Benefits**: Single monthly payment, potential lower payments
+- **Considerations**: May lose some benefits of original loans
+- **Best For**: Students with multiple federal loans
+
+### Private Student Loans
+- **Eligibility**: Based on credit and income (or co-signer)
+- **Interest Rates**: Vary widely, often higher than federal loans
+- **Repayment Terms**: Varies by lender
+- **Benefits**: May have fewer restrictions
+- **Best For**: Students who need additional funds beyond federal limits
+
+## Student Loan Application Process
+
+### FAFSA Completion
+1. **Free Application for Federal Student Aid**: Required for federal aid
+2. **Tax Information**: Use previous year's tax return
+3. **Dependency Status**: Determines what information needed
+4. **Financial Information**: Income, assets, household size
+5. **School Selection**: Choose schools to receive FAFSA results
+
+### Federal Loan Application
+1. **Complete FAFSA**: Start with FAFSA completion
+2. **Receive Aid Packages**: Schools send financial aid offers
+3. **Accept Aid**: Choose which aid to accept
+4. **Entrance Counseling**: Required for first-time borrowers
+5. **Sign Master Promissory Note**: Legal agreement to repay loans
+
+### Private Loan Application
+1. **Research Lenders**: Compare rates and terms
+2. **Apply**: Submit application with credit check
+3. **School Certification**: Lender verifies enrollment and costs
+4. **Approval and Disbursement**: Funds sent to school after approval
+
+## Student Loan Interest Rates
+
+### Current Federal Rates (2023-2024)
+- **Direct Subsidized/Unsubsidized**: 5.50% for undergraduates
+- **Direct PLUS Loans**: 8.05% for parents and graduates
+- **Direct Consolidation**: Weighted average of loans being consolidated
+
+### Rate Factors
+- **Undergraduate vs. Graduate**: Different rates for different loan types
+- **Loan Type**: Subsidized vs. unsubsidized rates
+- **Congressional Action**: Rates set by federal legislation
+- **Academic Year**: Rates apply to loans disbursed during that year
+
+### Interest Calculation
+- **Simple Daily Interest**: Interest = Principal × Rate ÷ 365 × Days
+- **Capitalization**: Interest added to principal at specific times
+- **Subsidized vs. Unsubsidized**: Government pays interest for subsidized loans
+
+## Student Loan Limits
+
+### Annual Limits (Dependent Students)
+| Year in School | Subsidized/Unsubsidized | Total (Including PLUS) |
+|----------------|-------------------------|----------------------|
+| Freshman | $3,500 | $5,500-$9,500 |
+| Sophomore | $4,500 | $6,500-$10,500 |
+| Junior/Senior | $5,500 | $7,500-$12,500 |
+
+### Aggregate Limits
+- **Dependent Undergraduate**: $31,000 (max $23,000 subsidized)
+- **Independent Undergraduate**: $57,500 (max $23,000 subsidized)
+- **Graduate Students**: $138,500 (max $65,500 subsidized)
+
+### PLUS Loan Limits
+- **Cost of Attendance**: Minus other financial aid received
+- **No Set Maximum**: Can borrow up to full cost of attendance
+- **Credit Requirement**: Must not have adverse credit history
+
+## Student Loan Repayment Options
+
+### Standard Repayment
+- **Term**: 10 years
+- **Payment Amount**: Fixed amount over repayment period
+- **Interest**: Pays most interest over life of loan
+- **Best For**: Borrowers who can afford higher payments
+
+### Graduated Repayment
+- **Term**: 10 years
+- **Payment Amount**: Starts low, increases every 2 years
+- **Interest**: May pay more interest than standard
+- **Best For**: Borrowers expecting income growth
+
+### Extended Repayment
+- **Term**: Up to 25 years
+- **Payment Amount**: Lower monthly payments
+- **Interest**: Significantly more interest paid
+- **Best For**: Borrowers needing lower payments
+
+### Income-Driven Repayment Plans
+
+#### Income-Based Repayment (IBR)
+- **Payment**: 10-15% of discretionary income
+- **Term**: 20-25 years
+- **Forgiveness**: Remaining balance forgiven after term
+- **Eligibility**: Must demonstrate financial hardship
+
+#### Pay As You Earn (PAYE)
+- **Payment**: 10% of discretionary income
+- **Term**: 20 years
+- **Forgiveness**: Remaining balance forgiven
+- **Eligibility**: New borrowers after 10/1/2007
+
+#### Revised Pay As You Earn (REPAYE)
+- **Payment**: 10% of discretionary income
+- **Term**: 20 years (undergraduate), 25 years (graduate)
+- **Forgiveness**: Remaining balance forgiven
+- **Eligibility**: All Direct Loan borrowers
+
+#### Income-Contingent Repayment (ICR)
+- **Payment**: 20% of discretionary income or 12-year fixed payment
+- **Term**: 25 years
+- **Forgiveness**: Remaining balance forgiven
+- **Eligibility**: Direct Loan borrowers
+
+## Student Loan Forgiveness Programs
+
+### Public Service Loan Forgiveness (PSLF)
+- **Requirements**: 120 qualifying payments while working full-time
+- **Employment**: Government or qualifying non-profit
+- **Loan Types**: Direct Loans only
+- **Payment Plan**: Must be on income-driven repayment
+
+### Teacher Loan Forgiveness
+- **Amount**: Up to $17,500 for teachers
+- **Requirements**: 5 consecutive years teaching
+- **Subject Areas**: High-need subjects, low-income schools
+- **Loan Types**: Direct and FFEL loans
+
+### Other Forgiveness Programs
+- **Military Service**: Various programs for service members
+- **Healthcare Professionals**: Programs for doctors, nurses
+- **Lawyers**: Public interest law forgiveness
+- **STEM Fields**: Programs for science, technology, engineering, math
+
+## Student Loan Tips
+
+### Borrowing Wisely
+1. **Borrow Only What You Need**: Don't accept full loan amounts
+2. **Consider Future Earnings**: Choose majors with good job prospects
+3. **Explore All Aid Options**: Grants, scholarships before loans
+4. **Compare Costs**: Consider in-state vs. out-of-state tuition
+5. **Plan for Increases**: Account for tuition increases over time
+
+### During School
+1. **Maintain Enrollment**: Stay enrolled at least half-time
+2. **Interest Benefits**: Accept subsidized loans when possible
+3. **Make Interest Payments**: For unsubsidized loans if possible
+4. **Consider In-School Payments**: If budget allows
+5. **Track Loan Totals**: Monitor cumulative borrowing
+
+### After Graduation
+1. **Understand Repayment**: Know your options and requirements
+2. **Choose Right Plan**: Select repayment plan that fits budget
+3. **Set Up Autopay**: Often qualify for interest rate reduction
+4. **Pay Extra When Possible**: Reduces total interest paid
+5. **Communicate with Servicer**: Contact if having payment difficulties
+
+## Student Loan Defaults
+
+### What is Default?
+- **Definition**: Failure to make payments for 270+ days
+- **Consequences**: Severe credit damage, wage garnishment
+- **Collection**: Loans transferred to collection agencies
+- **Legal Action**: Possible lawsuit and judgment
+
+### Default Prevention
+1. **Communicate Early**: Contact servicer if having problems
+2. **Deferment**: Temporary postponement for specific circumstances
+- **In School**: While enrolled at least half-time
+- **Unemployment**: While seeking employment
+- **Economic Hardship**: For documented financial difficulties
+
+3. **Forbearance**: Temporary reduction or postponement of payments
+- **Financial Hardship**: When experiencing difficulties
+- **Medical Expenses**: For significant medical costs
+- **Military Deployment**: For service members
+
+### Getting Out of Default
+1. **Loan Rehabilitation**: Make 9 monthly payments, then monthly payments
+2. **Consolidation**: Combine defaulted loans into new Direct Loan
+3. **Settlement**: Negotiate to pay less than full balance
+4. **Bankruptcy**: Possible but difficult to discharge student loans
+
+## Private vs. Federal Loans
+
+### Federal Loan Benefits
+- **Income-Driven Repayment**: Based on earnings
+- **Forgiveness Programs**: PSLF and other forgiveness options
+- **Deferment/Forbearance**: More flexible options
+- **No Credit Check**: Except PLUS loans
+- **Fixed Interest Rates**: Rates set by government
+
+### When to Consider Private Loans
+- **Maxed Out Federal Loans**: When federal aid isn't sufficient
+- **Better Interest Rates**: If you have excellent credit
+- **Different Repayment**: If you prefer different terms
+- **Special Circumstances**: Some private lenders offer unique features
+
+## Planning for College Costs
+
+### Cost Components
+- **Tuition**: Primary education cost
+- **Fees**: Activity fees, technology fees
+- **Room and Board**: Housing and meal plans
+- **Books and Supplies**: Textbooks and course materials
+- **Personal Expenses**: Transportation, clothing, entertainment
+
+### Cost Reduction Strategies
+- **In-State Schools**: Lower tuition for state residents
+- **Community College**: Start at community college to save money
+- **Scholarships**: Free money that doesn't need to be repaid
+- **Work-Study Programs**: Part-time work while attending school
+- **Tax Credits**: Education tax credits to reduce tax liability
+
+Student loans can be a valuable investment in your education and future, but it's important to borrow responsibly and understand all your options. Always exhaust federal loan options before considering private loans, and plan for repayment from the beginning.

@@ -1,0 +1,217 @@
+# Loan Calculators and Formulas
+
+## Basic Loan Payment Formula
+
+### Standard Amortization Formula
+**M = P [r(1+r)^n] / [(1+r)^n - 1]**
+
+Where:
+- M = Monthly Payment
+- P = Principal Loan Amount
+- r = Monthly Interest Rate (annual rate ÷ 12)
+- n = Total Number of Payments (loan term in months)
+
+### Example Calculation
+- **Loan Amount**: $25,000
+- **Annual Interest Rate**: 8.5%
+- **Loan Term**: 5 years (60 months)
+
+**Step 1**: Calculate monthly interest rate
+- r = 8.5% ÷ 12 = 0.085 ÷ 12 = 0.007083
+
+**Step 2**: Calculate total payments
+- n = 5 × 12 = 60
+
+**Step 3**: Apply formula
+- M = $25,000 [0.007083(1.007083)^60] / [(1.007083)^60 - 1]
+- M = $25,000 [0.007083 × 1.517] / [1.517 - 1]
+- M = $25,000 [0.01074] / [0.517]
+- M = $25,000 × 0.02077
+- **M = $519.25 per month**
+
+## Interest-Only Payment Calculator
+
+### Formula
+**M = P × (r/12)**
+
+### Example
+- **Loan Amount**: $200,000
+- **Annual Rate**: 6.0%
+- **M = $200,000 × (0.06/12)**
+- **M = $1,000 per month** (interest only)
+
+## Total Interest Calculator
+
+### Formula
+**Total Interest = (M × n) - P**
+
+### Example
+- **Monthly Payment**: $519.25
+- **Total Payments**: $519.25 × 60 = $31,155
+- **Principal**: $25,000
+- **Total Interest**: $31,155 - $25,000 = **$6,155**
+
+## Loan Balance Calculator
+
+### Formula (Remaining Balance)
+**B = P × [(1+r)^n - (1+r)^k] / [(1+r)^n - 1]**
+
+Where:
+- B = Remaining Balance
+- k = Number of Payments Made
+
+### Example
+After 24 payments on the $25,000 loan:
+- **B = $25,000 × [(1.007083)^60 - (1.007083)^24] / [(1.007083)^60 - 1]**
+- **B = $13,167.45**
+
+## APR Calculator (Including Fees)
+
+### Formula
+**APR = ((1 + r/12)^12 - 1) × 100**
+
+### With Fees Example
+- **Loan Amount**: $20,000
+- **Interest Rate**: 7.5%
+- **Origination Fee**: $500 (2.5%)
+- **Other Fees**: $200
+
+**Effective Amount Received**: $19,300
+**Monthly Payment**: $398.45
+**APR Calculation**: Approximately 8.2%
+
+## Debt-to-Income Ratio Calculator
+
+### Formula
+**DTI = (Total Monthly Debt Payments / Gross Monthly Income) × 100**
+
+### Example
+- **Monthly Income**: $6,000
+- **Current Debt Payments**:
+  - Mortgage/Rent: $1,500
+  - Credit Cards: $300
+  - Car Loan: $400
+  - Student Loans: $250
+- **Total Debt**: $2,450
+- **DTI = ($2,450 / $6,000) × 100 = 40.8%**
+
+## Loan Affordability Calculator
+
+### Maximum Monthly Payment
+**Max Monthly Payment = (Monthly Income × 0.28) - Other Debts**
+
+### Maximum Loan Amount
+**Max Loan = Max Monthly Payment × [((1+r)^n - 1) / (r(1+r)^n)]**
+
+### Example
+- **Monthly Income**: $6,000
+- **Other Debts**: $800
+- **Max Housing Payment**: ($6,000 × 0.28) - $800 = $880
+- **Available for Mortgage**: $880
+
+## Amortization Schedule Calculator
+
+### Principal and Interest Allocation
+
+**Payment 1**:
+- **Interest**: $25,000 × 0.007083 = $177.08
+- **Principal**: $519.25 - $177.08 = $342.17
+- **Remaining Balance**: $25,000 - $342.17 = $24,657.83
+
+**Payment 60**:
+- **Interest**: $13,167.45 × 0.007083 = $93.30
+- **Principal**: $519.25 - $93.30 = $425.95
+- **Remaining Balance**: $0.00
+
+## Compound Interest Calculator
+
+### Formula (Future Value)
+**A = P(1 + r/n)^(nt)**
+
+Where:
+- A = Final Amount
+- P = Principal
+- r = Annual Interest Rate
+- n = Compounding Frequency per Year
+- t = Time in Years
+
+### Example
+- **Principal**: $10,000
+- **Rate**: 6% annually
+- **Compounding**: Monthly (12 times/year)
+- **Time**: 5 years
+
+**A = $10,000(1 + 0.06/12)^(12×5)**
+**A = $10,000(1.005)^60**
+**A = $13,488.50**
+
+## Balloon Payment Calculator
+
+### Formula
+**B = P × (1+r)^k - M × [((1+r)^k - 1) / r]**
+
+Where:
+- B = Balloon Payment
+- k = Number of Payments Until Balloon
+- M = Regular Payment Amount
+
+## Early Payoff Calculator
+
+### Time Saved Formula
+**Original Term - Remaining Payments = Time Saved**
+
+### Interest Saved Formula
+**Original Total Interest - Remaining Interest = Interest Saved**
+
+### Example
+- **Original Term**: 60 months
+- **Payments Made**: 24 months
+- **Time Saved**: 36 months
+- **Interest Saved**: $3,247
+
+## Loan Comparison Calculator
+
+### Break-Even Analysis
+**Break-Even Point = Additional Costs / Monthly Savings**
+
+### Example
+- **Refinance Costs**: $2,500
+- **Monthly Savings**: $150
+- **Break-Even Point**: $2,500 ÷ $150 = 16.7 months
+
+## Quick Reference Tables
+
+### 30-Year Mortgage ($100,000)
+| Rate | Monthly Payment | Total Interest |
+|------|----------------|----------------|
+| 6.0% | $599.55 | $115,838 |
+| 6.5% | $632.07 | $127,544 |
+| 7.0% | $665.30 | $139,509 |
+| 7.5% | $699.21 | $151,717 |
+| 8.0% | $733.76 | $164,154 |
+
+### 5-Year Personal Loan ($10,000)
+| Rate | Monthly Payment | Total Interest |
+|------|----------------|----------------|
+| 8.0% | $202.76 | $2,166 |
+| 10.0% | $212.48 | $2,749 |
+| 12.0% | $222.44 | $3,346 |
+| 15.0% | $237.90 | $4,274 |
+| 18.0% | $253.93 | $5,236 |
+
+## Using Online Calculators
+
+### Popular Calculator Types
+1. **Mortgage Calculators**: Include property taxes, insurance
+2. **Personal Loan Calculators**: Fixed payments, no collateral
+3. **Auto Loan Calculators**: Include vehicle depreciation
+4. **Student Loan Calculators**: Income-driven repayment options
+5. **Business Loan Calculators**: Include fees and terms
+
+### Input Verification
+- **Double-check Rates**: Ensure annual vs. monthly rates
+- **Verify Loan Terms**: Confirm years vs. months
+- **Include All Costs**: Taxes, insurance, fees
+- **Compare Total Costs**: Not just monthly payments
+
+These formulas and calculators provide the foundation for understanding loan costs and making informed borrowing decisions. Always verify calculations and consider consulting with financial professionals for complex situations.

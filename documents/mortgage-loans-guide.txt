@@ -1,0 +1,185 @@
+# Mortgage Loans Guide
+
+## What is a Mortgage Loan?
+
+A mortgage loan is a secured loan used to purchase real estate. The property itself serves as collateral, meaning the lender can foreclose on the property if payments aren't made. Mortgages typically have lower interest rates than unsecured loans due to the collateral.
+
+## Types of Mortgage Loans
+
+### Conventional Loans
+- **Down Payment**: 3-20% typically required
+- **Credit Score**: 620+ typically required
+- **PMI**: Required if down payment less than 20%
+- **Terms**: 15, 20, or 30 years
+- **Best For**: Borrowers with good credit and stable income
+
+### FHA Loans
+- **Down Payment**: As low as 3.5% with 580+ credit score
+- **Credit Score**: 580+ for 3.5% down, 500+ for 10% down
+- **PMI**: Required and cannot be removed
+- **Loan Limits**: Varies by county
+- **Best For**: First-time homebuyers, lower credit scores
+
+### VA Loans
+- **Down Payment**: 0% for qualified veterans
+- **Credit Score**: No minimum (but lender may require)
+- **PMI**: No PMI required
+- **Funding Fee**: One-time fee (can be financed)
+- **Best For**: Eligible veterans and service members
+
+### USDA Loans
+- **Down Payment**: 0% for eligible rural areas
+- **Credit Score**: 640+ typically required
+- **Income Limits**: Must meet income requirements
+- **Geographic**: Rural and suburban areas only
+- **Best For**: Low to moderate income borrowers in rural areas
+
+## Mortgage Process Steps
+
+### Pre-Approval (Before House Hunting)
+1. **Gather Documents**: Income, assets, credit information
+2. **Submit Application**: Basic financial information
+3. **Credit Check**: Hard inquiry on credit report
+4. **Receive Pre-Approval Letter**: Shows how much you can borrow
+5. **Timeline**: 1-3 business days
+
+### House Hunting and Offer
+1. **Find Property**: Work with real estate agent
+2. **Make Offer**: Negotiate price and terms
+3. **Offer Acceptance**: Seller accepts your offer
+4. **Timeline**: Varies by market conditions
+
+### Mortgage Application and Underwriting
+1. **Formal Application**: Complete mortgage application
+2. **Document Submission**: Provide all required documents
+3. **Appraisal**: Property valuation by licensed appraiser
+4. **Underwriting**: Lender reviews all information
+5. **Conditional Approval**: Approval with conditions
+6. **Timeline**: 30-45 days typically
+
+### Closing
+1. **Clear Conditions**: Satisfy any loan conditions
+2. **Final Walkthrough**: Inspect property before closing
+3. **Closing Disclosure**: Review final loan terms
+4. **Closing Meeting**: Sign all documents
+5. **Fund Transfer**: Money transferred to seller
+6. **Timeline**: 1-2 days after conditions cleared
+
+## Required Documents
+
+### Income Verification
+- **Pay Stubs**: Last 30 days
+- **W-2 Forms**: Last 2 years
+- **Tax Returns**: Last 2 years
+- **Employment Letter**: From employer
+- **Self-Employment**: Tax returns and business financials
+
+### Asset Verification
+- **Bank Statements**: Last 2-3 months
+- **Investment Accounts**: Brokerage, retirement accounts
+- **Gift Letters**: If using gifted funds
+- **Down Payment Proof**: Source of down payment funds
+
+### Property Information
+- **Purchase Agreement**: Signed sales contract
+- **Homeowners Insurance**: Policy declaration page
+- **Property Appraisal**: Completed by licensed appraiser
+- **Homeowners Association**: Documents if applicable
+
+## Mortgage Calculations
+
+### Monthly Payment Formula
+**M = P [r(1+r)^n] / [(1+r)^n - 1]**
+
+Where:
+- M = Monthly Payment
+- P = Principal Loan Amount
+- r = Monthly Interest Rate (annual rate ÷ 12)
+- n = Number of Payments (loan term × 12)
+
+### Example Calculation
+- **Loan Amount**: $300,000
+- **Interest Rate**: 6.5% annually
+- **Loan Term**: 30 years
+- **Monthly Payment**: $1,896.20
+
+### Total Interest Paid Example
+- **Loan Amount**: $300,000
+- **Total Payments**: $682,632
+- **Total Interest**: $382,632
+- **Interest Percentage**: 56.4% of total cost
+
+## Mortgage Rates and Factors
+
+### What Affects Your Rate
+- **Credit Score**: Higher scores = lower rates
+- **Down Payment**: Larger down payment = lower rate
+- **Loan Amount**: Conforming vs. jumbo loans
+- **Property Type**: Primary, secondary, investment
+- **Occupancy**: Owner-occupied vs. investment property
+- **Debt-to-Income Ratio**: Lower ratios = better rates
+
+### Rate Types
+- **Fixed Rate**: Rate stays same for entire loan term
+- **Adjustable Rate (ARM)**: Rate can change after fixed period
+- **Interest Only**: Pay only interest for initial period
+- **Option ARM**: Multiple payment options
+
+## Mortgage Insurance
+
+### Private Mortgage Insurance (PMI)
+- **When Required**: Down payment less than 20%
+- **Cost**: 0.3-1.5% of loan amount annually
+- **Removal**: Automatically when LTV reaches 80%
+- **Manual Cancellation**: Can request at 80% LTV
+
+### FHA Mortgage Insurance
+- **Upfront MIP**: 1.75% of loan amount (can be financed)
+- **Annual MIP**: 0.45-0.85% of loan amount annually
+- **Duration**: For life of loan if down payment less than 10%
+
+### VA Funding Fee
+- **First-Time Use**: 2.15% for down payment, 2.3% for no down payment
+- **Subsequent Use**: 3.3% for down payment, 3.6% for no down payment
+- **Exemptions**: Disabled veterans, surviving spouses
+
+## Tips for First-Time Homebuyers
+
+### Before You Start
+1. **Save for Down Payment**: Aim for 20% to avoid PMI
+2. **Check Credit Score**: Understand your credit standing
+3. **Get Pre-Approved**: Know your budget before shopping
+4. **Budget for Closing Costs**: 2-5% of purchase price
+5. **Research Neighborhoods**: Consider schools, commute, amenities
+
+### During the Process
+1. **Don't Change Financial Situation**: Don't open new credit accounts
+2. **Keep Documents Organized**: Maintain all paperwork
+3. **Communicate with Lender**: Respond quickly to requests
+4. **Get Home Inspection**: Protect yourself from hidden problems
+5. **Review Closing Disclosure**: Compare to Loan Estimate
+
+### Common Mistakes to Avoid
+- **Maxing Out Pre-Approval**: Borrowing the maximum amount
+- **Skipping Home Inspection**: Saving money now, costing more later
+- **Changing Jobs**: Stable employment preferred
+- **Making Large Purchases**: New credit can affect debt-to-income ratio
+- **Not Saving for Emergencies**: Keep funds for unexpected expenses
+
+## Refinancing
+
+### When to Refinance
+- **Lower Interest Rates**: Rates dropped 1-2% from original
+- **Improved Credit Score**: Better credit can qualify for better rates
+- **Change Loan Term**: Shorten or extend loan term
+- **Cash-Out**: Access home equity for other purposes
+- **Remove PMI**: When home value increased
+
+### Refinance Process
+1. **Shop for Rates**: Compare multiple lenders
+2. **Apply and Underwrite**: Similar to original mortgage process
+3. **Appraisal**: May be required
+4. **Closing**: Sign new loan documents
+5. **Timeline**: 30-60 days typically
+
+Remember: A mortgage is likely the largest debt you'll ever have. Take time to understand all terms, shop for the best rates, and ensure you can comfortably afford the monthly payments for the life of the loan.
