@@ -247,8 +247,9 @@ class ReActAgent:
     def guardian_moderation(self, state: AgentState):
         message = state["messages"][-1]
         detectors = {
-            "granite_guardian": {"threshold": 0.4},
-            "hap": {"threshold": 0.4},
+            "hap": {},
+            "granite_guardian": {"risk_name": "harm", "threshold": 0.6},
+            "topic_relevance": {"threshold": 0.5},
             "pii": {},
         }
         guardian = Guardian(api_client=self.client, detectors=detectors)
