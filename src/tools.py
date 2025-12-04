@@ -31,13 +31,20 @@ def calc_apr(
 def get_tools(rag: RAG, db_conn: SQLiteConnection) -> list[BaseTool]:
     # rag tools
     @tool(
-        "retrieve_rag_knowledge",
+        "retrieve_loan_knowledge",
         description="Use this tool to retrieve relevant loan documents and information to assist with user queries about loans.",
     )
     def retrieve_loan_knowledge(query: str) -> str:
-        docs = rag.search(query, k=3)
-        combined_content = "\n\n".join([doc.page_content for doc in docs])
-        return combined_content if combined_content else "No relevant documents found."
+        try:
+            docs = rag.search(query, k=3)
+            print(f"Retrieved {len(docs)} documents for query")
+            combined_content = "\n\n".join([doc.page_content for doc in docs])
+            return (
+                combined_content if combined_content else "No relevant documents found."
+            )
+        except Exception as e:
+            print(f"Error retrieving documents: {e}")
+            return "No relevant documents found due to an error."
 
     # db tools
     @tool(
@@ -109,7 +116,7 @@ def get_tools(rag: RAG, db_conn: SQLiteConnection) -> list[BaseTool]:
 
     @tool(
         "general_calculation_tool",
-        description="Use this tool to perform general financial calculations based on provided expression.",
+        description="Use this tool to perform general  calculations based on provided expression.",
     )
     def general_calculation_tool(expression: str) -> str:
         # A simple eval-based calculator (ensure safety in real implementations)
@@ -120,7 +127,7 @@ def get_tools(rag: RAG, db_conn: SQLiteConnection) -> list[BaseTool]:
 
     @tool(
         "batch_general_calculation_tool",
-        description="Use this tool to perform batch general financial calculations based on provided expressions.",
+        description="Use this tool to perform batch general calculations based on provided expressions.",
     )
     def batch_general_calculation_tool(expressions: list[str]) -> str:
         results = []

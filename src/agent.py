@@ -1,6 +1,5 @@
 # imports
 import sqlite3
-import getpass
 
 from ibm_watsonx_ai import APIClient, Credentials
 from ibm_watsonx_ai.foundation_models.moderations import Guardian
@@ -17,6 +16,7 @@ from langchain_core.messages import (
     HumanMessage,
     ToolMessage,
     AIMessage,
+    filter_messages,
 )
 from langchain_experimental.tools.python.tool import PythonREPLTool
 from sqlalchemy import create_engine
@@ -26,14 +26,13 @@ import dal
 from prompt import generate_base_prompt, generate_eligibility_prompt
 from model import (
     User,
-    Loan,
     BaseAgentOutputSchema,
     EligibilityAgentOutputSchema,
-    UserLoan,
 )
 from ibm_watsonx_ai import APIClient
 from langchain_ibm import ChatWatsonx
 from langchain.tools import BaseTool
+from langchain_core.messages.utils import trim_messages, count_tokens_approximately
 
 
 class AgentState(TypedDict):
@@ -44,6 +43,22 @@ class AgentState(TypedDict):
     loan_to_apply: Annotated[
         int | None, "The loan id the user wants to apply for, if any"
     ]
+
+
+def message_trimmer(
+    messages: list[AnyMessage], max_tokens: int = 1024
+) -> list[AnyMessage]:
+    """
+    Trim messages to fit within max_tokens limit.
+    """
+    return trim_messages(
+        messages,
+        strategy="last",
+        token_counter=count_tokens_approximately,
+        max_tokens=max_tokens,
+        start_on="human",
+        end_on=("human", "tool"),
+    )
 
 
 class ReActAgent:
@@ -122,6 +137,10 @@ class ReActAgent:
         print("===== Calling Base Advisor Agent =====")
         messages = state["messages"]
         prompt = generate_base_prompt(self.user, messages)
+        est = count_tokens_approximately(prompt)
+        if est > 4000:
+            print(f"Prompt too long ({est} tokens)", prompt)
+
         output = self.llm.invoke(prompt)
         # Check for tool calls
         if hasattr(output, "tool_calls") and output.tool_calls:
@@ -136,7 +155,10 @@ class ReActAgent:
                 "messages": [AIMessage(content=parsed.response)],
             }
         except Exception as e:
-            print("Error parsing LLM output:", output.content)
+            print(
+                "Error parsing LLM output:",
+                output.content if output.content else output,
+            )
             return {
                 "loan_to_apply": None,
                 "messages": [AIMessage(content=output.content)],
@@ -175,7 +197,10 @@ class ReActAgent:
                 "messages": [AIMessage(content=parsed.user_message)],
             }
         except Exception as e:
-            print("Error parsing LLM output:", output.content)
+            print(
+                "Error parsing LLM output:",
+                output.content if output.content else output,
+            )
             return {
                 "loan_to_apply": None,
                 "messages": [AIMessage(content=output.content)],
@@ -187,10 +212,22 @@ class ReActAgent:
         results = []
         for t in tool_calls:
             print("Invoking tool:", t["name"], "with args:", t["args"])
-            result = self.tools[t["name"]].invoke(t["args"])
-            results.append(
-                ToolMessage(tool_call_id=t["id"], name=t["name"], content=str(result))
-            )
+            try:
+                result = self.tools[t["name"]].invoke(t["args"])
+                results.append(
+                    ToolMessage(
+                        tool_call_id=t["id"], name=t["name"], content=str(result)
+                    )
+                )
+            except Exception as e:
+                print(f"Error invoking tool {t['name']}: {e}")
+                results.append(
+                    ToolMessage(
+                        tool_call_id=t["id"],
+                        name=t["name"],
+                        content=f"Error invoking tool: {e}",
+                    )
+                )
         return {
             "messages": results,
             "loan_to_apply": state["loan_to_apply"],

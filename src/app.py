@@ -67,6 +67,7 @@ def chat_ui():
 
                         assistant_response = utils.normalize_text(raw)
                 except Exception as e:
+                    print("Agent invocation error:", e)
                     assistant_response = f"(Agent error) {e}"
 
                 st.write(assistant_response)

@@ -240,7 +240,7 @@ if __name__ == "__main__":
     print(f"Collection info: {info}")
 
     # Search
-    query = "mortgage"
+    query = "meaning of personal loan mortgage loan auto loan small business loan student loan emergency medical loan home improvement loan debt consolidation loan"
     results = rag_system.search(query, k=5)
 
     print("Search Results:")
