@@ -17,6 +17,6 @@ def get_model():
     llm = ChatWatsonx(
         model_id=model_id,
         watsonx_client=client,
-        params={"temperature": 0.1, "max_new_tokens": 4096},
+        params={"temperature": 0.1, "max_new_tokens": 2048},
     )
     return llm, client

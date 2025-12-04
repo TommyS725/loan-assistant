@@ -138,8 +138,7 @@ class ReActAgent:
         messages = state["messages"]
         prompt = generate_base_prompt(self.user, messages)
         est = count_tokens_approximately(prompt)
-        if est > 4000:
-            print(f"Prompt too long ({est} tokens)", prompt)
+        print(f"Base Advisor prompt tokens: {est}")
 
         output = self.llm.invoke(prompt)
         # Check for tool calls
