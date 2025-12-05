@@ -1,31 +1,29 @@
-AI Loan Assistant (watsonx.ai + LangChain design)
+# Loan Assistant — Streamlit + Watsonx.ai
 
-# Loan Assistant — Streamlit + Watsonx.ai (starter)
+This repository is a focused prototype implementation of a Loan Assistant that combines an interactive chat interface, a small demo relational database, and a retrieval-augmented generation (RAG) layer for contextual answers.
 
-This repository contains a lightweight, developer-friendly scaffold for a Loan Assistant application. The app combines a chat interface, document analysis (vision + OCR), a small relational database for demo loan/user data, and a retrieval-augmented generation (RAG) surface for answering contextual questions.
+This prototype is designed for evaluation and rapid iteration rather than production deployment. Use it to validate interaction patterns, inspect RAG behavior, and prototype tool integrations (APR calculators, eligibility checks, etc.).
 
-The codebase is organized to make it easy to swap in real LLMs, wire production RAG connectors, and add tools (APR calculators, eligibility checkers, etc.). It is intended as a starting point for building an internal or prototype loan-assistant tool.
+**Highlights**
 
-**Key features**
+- ReAct-style agent architecture powered by LangChain concepts.
+- Streamlit UI with a simple chat interface and an "Applied Loans" viewer.
+- Lightweight RAG index and local vector store for quick retrieval experiments.
+- Small seeded SQLite demo DB with example loans and users for local testing.
+- IBM Granite Guardians for prompt filtering and safety.
 
-- Streamlit front-end with a chat UI and an "Applied Loans" viewer
-- Typed session state wrapper (`src/state.py`) for safer session management
-- Agent abstraction (ReAct-style) wired to a Watsonx adapter (mockable)
-- Simple SQLite demo database seeded with loan and user examples
-- Document upload + vision OCR helpers (PDF -> images -> vision model) and a simple local chunk index
+**Repository layout**
 
-## Directory overview
+- `src/` — application code (agent, RAG, prompts, UI)
+- `src/app.py` — Streamlit app entrypoint
+- `src/state.py` — typed `AppState` wrapper for `st.session_state`
+- `src/db.py` — demo DB initialization and helpers
+- `src/agent.py`, `src/llm.py`, `src/rag.py`, `src/tools.py` — agent and integration glue
+- `data/`, `documents/`, `chroma_db/` — sample content and local vector store
 
-- `src/` — main application code (agent, db, rag, prompt, UI)
-- `src/app.py` — Streamlit app and UI
-- `src/state.py` — typed AppState stored in `st.session_state`
-- `src/db.py` — demo database initialization and helpers
-- `src/agent.py`, `src/llm.py`, `src/rag.py`, `src/tools.py` — agent + tooling glue
-- `data/`, `documents/`, `chroma_db/` — sample data and local vector store folder
+**Quick start (development)**
 
-## Quick start (development)
-
-1. Create and activate a virtual environment, then install requirements:
+1. Create and activate a virtual environment, then install dependencies:
 
 ```bash
 python -m venv .venv
@@ -33,53 +31,20 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. Copy or provide required secrets (recommended using a `.env` file or Streamlit secrets):
+2. Provide credentials and optional overrides (recommended via a `.env` file or Streamlit secrets). Example variables used in this repo's `.env.example`:
 
-- `WATSONX_API_KEY` — required to call IBM watsonx.ai
-- Optional: `WATSONX_PROJECT_ID`, `WATSONX_MODEL_ID`, `WATSONX_VISION_MODEL_ID`, `WATSONX_API_URL`, `WATSONX_VISION_API_URL`
+- `WATSONX_URL` — watsonx.ai endpoint
+- `WATSONX_APIKEY` — watsonx API key
+- `WATSONX_MODEL_ID` — default model identifier
+- `WATSONX_PROJECT_ID` — optional project context
 
-You can create a `.env` at the repo root and Streamlit will read it in development.
-
-Run the Streamlit app:
+3. Run the app locally:
 
 ```bash
 streamlit run src/app.py
 ```
 
-Open the URL printed by Streamlit in your browser. Use the sidebar to select a user, upload documents (optional), and switch between Chat and Applied Loans.
+Then open the URL printed by Streamlit. Use the sidebar to pick a demo user, upload documents (optional), and switch between Chat and Applied Loans.
 
-## Configuration notes
-
-- The project contains sensible defaults in code for testing, but for production you should set environment variables for Watsonx credentials and endpoints.
-- The SQLite database used for demo data is initialized by `src/db.py` and seeded on first run. For concurrent or production workloads consider using PostgreSQL or another server RDBMS.
-
-## Developer notes
-
-- All heavy resources (LLM client, DB connection, RAG index, agent instance) are created once and stored in a typed `AppState` to avoid reinitialization across Streamlit reruns.
-- Chat UI stores a short UI-only chat history (in `AppState.chat_history`) while the agent is expected to manage long-term memory if needed.
-- Text normalization utilities are applied before rendering to handle invisible unicode characters (narrow no‑break spaces, zero‑width joiners) frequently introduced by OCR or serialized model outputs.
-
-## Testing and debugging
-
-- There are example notebooks and utilities for running the agent in `mock` mode (no external API calls) for unit tests and offline development.
-- Add `print`/logging in `src/agent.py` and `src/llm.py` to debug request/response flows when integrating an LLM provider.
-
-## Security & privacy
-
-- Uploaded documents are stored locally in `/uploads` and indexed locally. Treat this as sensitive data and remove or secure files before sharing the environment.
-- Do not commit secrets to Git. Use `.env` files or Streamlit secrets for private configuration.
-
-## Next steps you might consider
-
-- Add streaming responses to the chat UI for better UX with long LLM responses
-- Persist chat history in a secure store if you need multi-session continuity
-- Replace SQLite with a managed DB for multi-user, concurrent access
-- Add more tool integrations (APR calculator, eligibility calculators, loan comparison table)
-
-## Credits
-
-- Built as a starter scaffold to explore combining Streamlit + Watsonx + RAG for domain-specific assistants.
-
-## License
-
-- MIT-style; adapt and extend as needed.
+**Github Repository**
+[https://github.com/TommyS725/loan-assistant](https://github.com/TommyS725/loan-assistant)
