@@ -46,5 +46,19 @@ streamlit run src/app.py
 
 Then open the URL printed by Streamlit. Use the sidebar to pick a demo user, upload documents (optional), and switch between Chat and Applied Loans.
 
+**Video Demo**
+
+## Knowledge Retrieval
+https://github.com/user-attachments/assets/47444546-f15d-4121-acc3-836d226b565d
+## Successful Application
+https://github.com/user-attachments/assets/31ca28ea-2d7e-4016-9e4e-1c431b7a7db3
+## Rejected Application
+https://github.com/user-attachments/assets/c2ef964b-ea22-43a1-903f-f73778ebe896
+## Calculation
+https://github.com/user-attachments/assets/ca55152a-2e94-4952-8759-8698e6ad9d95
+## Guardian
+https://github.com/user-attachments/assets/a3dc190f-99fe-4073-8e66-531d4ed6bd4b
+
+
 **Github Repository**
 [https://github.com/TommyS725/loan-assistant](https://github.com/TommyS725/loan-assistant)
